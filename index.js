@@ -157,9 +157,19 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+
+function processDuplicateFree(list, callback) {
+  const newDeDupArray = new Set (list)
+  let newArray = [...newDeDupArray]; 
+return callback(newArray);
 }
+
+// Or could use:
+//
+// function processDuplicateFree(list, callback) {
+//   const newDeDupArray = new Set (list)
+//   return callback(Array.from(newDeDupArray));
+// }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -240,13 +250,21 @@ return newTShirt;
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(runners) {
-  let total = 
-  runners.reduce(function(accumulator, currentValue){
+
+function tallyUpDonations(runners){
+  return runners.reduce(function(accumulator, currentValue){
     return accumulator + currentValue.donation;
-}, 0)
-  return total;
+  }, 0)
 }
+
+//Could also use:
+// function tallyUpDonations(runners) {
+//   let total = 
+//   runners.reduce(function(accumulator, currentValue){
+//     return accumulator + currentValue.donation;
+// }, 0)
+//   return total;
+// }
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
@@ -272,6 +290,33 @@ function counterMaker() {
   }
   // BROKEN CODE ENDS
 }
+
+
+// Could also do:
+//
+// function counterMaker() {
+//   let count = 0
+//   return function counter() {   
+//     return count++}
+// };
+
+// or:
+//
+// function counterMaker() {
+//   let count = 0;
+//   return () => {
+//     return count++;
+//   };
+// };
+
+//or:
+//
+// function counterMaker(){
+//   let count = -1;
+//   return function counter() {
+//     return count++;
+//   }
+// }
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -303,6 +348,21 @@ function counterMakerWithLimit(max) {
     return count;
   }
 }
+
+//Could also do:
+// function counterMakerWithLimit(maxValue) {
+//   let count = -1;
+//   return function counter(){
+//     if (count < maxValue){
+//       count++;
+//     }
+//     else{
+//       count = 0;
+//     }
+//     return count;
+
+//   }
+// }
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
